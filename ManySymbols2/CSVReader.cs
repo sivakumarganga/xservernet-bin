@@ -49,9 +49,13 @@ namespace Ptv.XServer.Demo.Clustering
         /// <returns> A value indicating whether the row has been successfully read. </returns>
         public bool ReadRow(CsvRow row)
         {
-            row.LineText = ReadLine();
-            if (String.IsNullOrEmpty(row.LineText))
+            if (this.EndOfStream)
                 return false;
+
+            row.LineText = ReadLine();
+            //It is not confirm that if line is empty , EOF
+            if (String.IsNullOrEmpty(row.LineText))
+                return true;
 
             int pos = 0;
             int rows = 0;
