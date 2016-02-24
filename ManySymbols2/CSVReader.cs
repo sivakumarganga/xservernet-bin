@@ -54,8 +54,11 @@ namespace Ptv.XServer.Demo.Clustering
 
             row.LineText = ReadLine();
             //It is not confirm that if line is empty , EOF
-            if (String.IsNullOrEmpty(row.LineText))
+            if (String.IsNullOrEmpty(row.LineText)){
+                row.Clear();
                 return true;
+            }
+                
 
             int pos = 0;
             int rows = 0;
